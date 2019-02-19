@@ -46,9 +46,13 @@ function scrub(e) {
 }
 
 /* HOOK UP THE EVENT LISTENERS */
+//--- WHEN YOU CLICK ANYWHERE ON THE VIDEO PLAYER
 video.addEventListener('click', togglePlay);
+//--- WHEN YOU CLICK ON THE PLAY BUTTON
 video.addEventListener('play', updateButton);
+//--- WHEN YOU CLICK ON THE PAUSE BUTTON
 video.addEventListener('pause', updateButton);
+//--- WHEN YOU CLICK ON THE SCRUBBER
 video.addEventListener('timeupdate', handleProgress);
 
 toggle.addEventListener('click', togglePlay);
