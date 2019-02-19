@@ -59,22 +59,34 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
+        // FUNCTION TO CALL FOR SOUND FILES WHEN A KEY IS PRESSED
         function playSound(e) {
+            // [] IS AN ATTRIBUTE SELECTOR - CALLS CORRESPONDING AUDIO ELEMENT FOR THE KEY
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            // SELECTS CORRESPONDING KEY TO ADD ANIMATION
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            // STOPS FUNCTION FROM RUNNING IF WRONG KEY IS HIT
             if (!audio) return;
+            // REWIND TO THE START SO SOUNDS CAN REPEAT FASTER
             audio.currentTime = 0;
+            // PLAYS AUDIO ELEMENT
             audio.play();
+            // ADDS A CLASS OF "PLAYING" SO WE CAN USE IT TO MANIPULATE ITS CSS
             key.classList.add('playing');
         }
-
+        
+        // REMOVES THE CSS FOR THE TRANSITIONS
         function removeTransition(e) {
+            // SKIP IT IF IT'S NOT A TRANSFORM
             if (e.propertyName !== 'transform') return;
+            // THIS = THE KEY. REMOVES CLASS TO TRANSITION CSS TO ORIGIN
             this.classList.remove('playing');
         }
-
+        // LISTENS FOR ALL THE KEYS ON THE PAGE
         const keys = document.querySelectorAll('.key');
+        // LISTENS FOR THE END OF THE SCALE TRANSITION (CSS), THEN SCALES BACK TO ORIGIN
         keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+        // LISTENING FOR KEYSTROKES 
         window.addEventListener('keydown', playSound);
     </script>
 
