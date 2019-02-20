@@ -7,6 +7,26 @@
 </head>
 <body>
 <script>
+    // DEFINES PRESSED AS AN ARRAY (KEYS TYPED)
+    const pressed = [];
+    // WHAT THE PAGE IS LISTENING FOR THE USER TO TYPE
+    const secretCode = 'unicorns';
+    // LISTENING FOR KEY STROKES AND TURNS IT INTO AN EVENT
+    window.addEventListener('keyup', (e) => {
+        console.log(e.key);
+        // WHENEVER SOMEONE PRESSES A KEY, IT IS PUSHED TO AN ARRAY
+        pressed.push(e.key);
+        // TRIMS ARRAY TO THE LENGTH OF THE SECRET CODE, STARTS FROM THE BACK AND ONLY LOOKS FOR THE NUMBER OF LETTERS IN THE SECRET CODE
+        pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+        // LOOKING FOR WHETHER THE USER HAS ENTERED THE SECRET CODE
+        if (pressed.join('').includes(secretCode)) {
+            console.log("DING DING!!");
+            // FUNCTION THAT ADDS UNICORNS AND SHIT TO PAGE FROM SOURCE
+            cornify_add();
+        }
+        console.log(pressed)
+
+    })
 </script>
 </body>
 </html>
