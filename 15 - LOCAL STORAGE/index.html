@@ -82,7 +82,7 @@
 
     function toggleDone(e) {
       // SKIP THIS UNLESS IT'S AN INPUT
-      if(!e.target.matches('input')) return;
+      if (!e.target.matches('input')) return;
       const el = e.target;
       const index = el.dataset.index;
       items[index].done = !items[index].done;
